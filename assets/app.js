@@ -335,7 +335,7 @@ if (contactForm) {
         })
         .then(function () {
           contactForm.reset();
-          setContactMessage("Съобщението беше изпратено успешно. Проверете входящата си поща.", "success");
+          setContactMessage("Съобщението е изпратено успешно.", "success");
         })
         .catch(function () {
           setContactMessage("Съобщението не беше изпратено. Моля, опитайте отново или използвайте имейла отляво.", "error");
