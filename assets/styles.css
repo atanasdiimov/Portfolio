@@ -1160,6 +1160,10 @@ html.js.app-ready .reveal.is-visible.tilt-photo {
   margin-bottom: 0.9rem;
 }
 
+.activity-copy p {
+  text-align: justify;
+}
+
 .activity-copy p + p {
   margin-top: 0.9rem;
 }
