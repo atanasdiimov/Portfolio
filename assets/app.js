@@ -249,7 +249,41 @@ const contactForm = document.querySelector("[data-contact-form]");
 if (contactForm) {
   const helper = document.querySelector("[data-contact-helper]");
   const note = document.querySelector("[data-contact-note]");
+  const submitButton = contactForm.querySelector("[type=\"submit\"]");
   const isLocalFile = window.location.protocol === "file:";
+
+  function setContactMessage(message, state) {
+    if (!helper) {
+      return;
+    }
+
+    helper.textContent = message;
+    helper.classList.remove("is-success", "is-error");
+
+    if (state) {
+      helper.classList.add("is-" + state);
+    }
+  }
+
+  function setContactBusy(isBusy) {
+    if (!submitButton) {
+      return;
+    }
+
+    submitButton.disabled = isBusy;
+    submitButton.textContent = isBusy ? "Изпращане..." : "Изпрати съобщение";
+  }
+
+  function getFieldValue(name, fallbackValue) {
+    const field = contactForm.querySelector('[name="' + name + '"]');
+
+    if (!field || typeof field.value !== "string") {
+      return fallbackValue;
+    }
+
+    const value = field.value.trim();
+    return value || fallbackValue;
+  }
 
   if (isLocalFile) {
     if (note) {
@@ -262,24 +296,57 @@ if (contactForm) {
   }
 
   contactForm.addEventListener("submit", function (event) {
-    if (!isLocalFile) {
+    event.preventDefault();
+
+    const email = contactForm.getAttribute("data-contact-email") || "";
+
+    if (!contactForm.reportValidity()) {
       return;
     }
 
-    event.preventDefault();
-
-    function getFieldValue(name, fallbackValue) {
-      const field = contactForm.querySelector('[name="' + name + '"]');
-
-      if (!field || typeof field.value !== "string") {
-        return fallbackValue;
-      }
-
-      const value = field.value.trim();
-      return value || fallbackValue;
+    if (!email) {
+      setContactMessage("Липсва имейл адрес за получаване на съобщението.", "error");
+      return;
     }
 
-    const email = contactForm.getAttribute("data-contact-email") || "";
+    if (!isLocalFile && window.fetch && window.FormData) {
+      const submitUrl = "https://formsubmit.co/ajax/" + encodeURIComponent(email);
+      const formData = new FormData(contactForm);
+
+      formData.delete("_next");
+      setContactBusy(true);
+      setContactMessage("Съобщението се изпраща...", "");
+
+      fetch(submitUrl, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            if (!response.ok || (data && data.success === false)) {
+              throw new Error((data && data.message) || "FormSubmit не прие съобщението.");
+            }
+
+            return data;
+          });
+        })
+        .then(function () {
+          contactForm.reset();
+          setContactMessage("Съобщението беше изпратено успешно. Проверете входящата си поща.", "success");
+        })
+        .catch(function () {
+          setContactMessage("Съобщението не беше изпратено. Моля, опитайте отново или използвайте имейла отляво.", "error");
+        })
+        .finally(function () {
+          setContactBusy(false);
+        });
+
+      return;
+    }
+
     const name = getFieldValue("name", "");
     const sender = getFieldValue("email", "");
     const subject = getFieldValue("subject", "Съобщение от портфолиото");

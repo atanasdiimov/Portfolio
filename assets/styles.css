@@ -1332,6 +1332,26 @@ html.js.app-ready .reveal.is-visible.tilt-photo {
   line-height: 1.7;
 }
 
+.contact-helper {
+  min-height: 2.7rem;
+}
+
+.contact-helper.is-success {
+  color: var(--accent-deep);
+  font-weight: 700;
+}
+
+.contact-helper.is-error {
+  color: #9b2f2f;
+  font-weight: 700;
+}
+
+.contact-submit:disabled {
+  cursor: progress;
+  opacity: 0.72;
+  transform: none;
+}
+
 
 .gallery-archive {
   display: grid;
