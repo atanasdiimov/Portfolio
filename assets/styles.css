@@ -1029,6 +1029,10 @@ html.js.app-ready .reveal.is-visible.tilt-photo {
   margin-bottom: 1rem;
 }
 
+.story-card p {
+  text-align: justify;
+}
+
 .story-card p + p {
   margin-top: 1rem;
 }
