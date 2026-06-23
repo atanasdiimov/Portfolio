@@ -86,9 +86,21 @@
               </p>
             </div>
 
-            <div class="year-divider reveal"><span>2025 / 2026 г.</span></div>
+            <section class="gallery-year reveal" data-gallery-year>
+              <button
+                class="gallery-year-button"
+                type="button"
+                aria-expanded="true"
+                aria-controls="activity-year-2025"
+                data-gallery-toggle
+              >
+                <span class="gallery-year-line" aria-hidden="true"></span>
+                <span class="gallery-year-label">2025 / 2026 г.</span>
+                <span class="gallery-year-arrow" aria-hidden="true"></span>
+              </button>
 
-            <div class="grid grid-3">
+              <div class="gallery-year-panel" id="activity-year-2025">
+                <div class="grid grid-3">
               <article class="card reveal activity-feature-card">
                 <div class="card-tag">КМИТ 5. клас</div>
                 <div class="activity-feature-layout">
@@ -252,7 +264,9 @@
                   </div>
                 </div>
               </article>
-            </div>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
       </main>
@@ -275,7 +289,6 @@
     <script src="assets/app.js?v=20260509a"></script>
   </body>
 </html>
-
 
 
 
