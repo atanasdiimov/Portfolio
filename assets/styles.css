@@ -1477,6 +1477,7 @@ html.js.app-ready .reveal.is-visible.tilt-photo {
 .about-campus-card img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -1537,10 +1538,10 @@ html.js body.is-loading {
     linear-gradient(180deg, rgba(234, 233, 226, 0.98), rgba(216, 211, 201, 0.98));
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.65s ease, visibility 0.65s ease;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
 }
 
-html.js.app-ready .site-loader {
+html.js .site-loader {
   display: grid;
 }
 

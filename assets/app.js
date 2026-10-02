@@ -12,14 +12,6 @@ function removeElement(element) {
   element.parentNode.removeChild(element);
 }
 
-function getNow() {
-  if (window.performance && typeof window.performance.now === "function") {
-    return window.performance.now();
-  }
-
-  return Date.now();
-}
-
 const siteLoader = document.querySelector("[data-site-loader]");
 
 if (siteLoader) {
@@ -27,9 +19,7 @@ if (siteLoader) {
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
     : null;
   const prefersReducedMotion = !!(mediaQuery && mediaQuery.matches);
-  const minimumVisibleMs = prefersReducedMotion ? 0 : 900;
-  const removeDelayMs = prefersReducedMotion ? 0 : 720;
-  const loadStartedAt = getNow();
+  const removeDelayMs = prefersReducedMotion ? 0 : 200;
   let loaderHidden = false;
 
   function hideSiteLoader() {
@@ -51,30 +41,12 @@ if (siteLoader) {
     }, removeDelayMs);
   }
 
-  function finishWhenReady() {
-    const elapsed = getNow() - loadStartedAt;
-    const remaining = Math.max(0, minimumVisibleMs - elapsed);
-    window.setTimeout(hideSiteLoader, remaining);
-  }
-
-  function onWindowLoad() {
-    finishWhenReady();
-    window.removeEventListener("load", onWindowLoad);
-  }
-
-  function onPageShow() {
-    finishWhenReady();
-    window.removeEventListener("pageshow", onPageShow);
-  }
-
-  if (document.readyState === "complete") {
-    finishWhenReady();
+  // The document can be used while images are still downloading.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hideSiteLoader, { once: true });
   } else {
-    window.addEventListener("load", onWindowLoad);
+    hideSiteLoader();
   }
-
-  window.addEventListener("pageshow", onPageShow);
-  window.setTimeout(hideSiteLoader, 4000);
 }
 
 const currentPage = document.body ? document.body.dataset.page : "";
@@ -207,7 +179,7 @@ if (tiltPhotoElements.length) {
   });
 }
 
-function formatExperience(startDate, now) {
+function getElapsedCalendarTime(startDate, now) {
   let years = now.getFullYear() - startDate.getFullYear();
   let months = now.getMonth() - startDate.getMonth();
 
@@ -221,10 +193,15 @@ function formatExperience(startDate, now) {
   }
 
   if (years < 0) {
-    return "0 г. 0 мес.";
+    return { years: 0, months: 0 };
   }
 
-  return years + " г. " + months + " мес.";
+  return { years: years, months: months };
+}
+
+function formatExperience(startDate, now) {
+  const elapsed = getElapsedCalendarTime(startDate, now);
+  return elapsed.years + " г. " + elapsed.months + " мес.";
 }
 
 forEachElements(document.querySelectorAll("[data-experience-start]"), function (element) {
@@ -242,6 +219,16 @@ forEachElements(document.querySelectorAll("[data-experience-start]"), function (
   }
 
   element.textContent = formatExperience(startDate, now);
+});
+
+forEachElements(document.querySelectorAll("[data-birth-date]"), function (element) {
+  const birthDate = new Date(element.getAttribute("data-birth-date") + "T00:00:00");
+
+  if (Number.isNaN(birthDate.getTime())) {
+    return;
+  }
+
+  element.textContent = getElapsedCalendarTime(birthDate, new Date()).years + " г.";
 });
 
 const contactForm = document.querySelector("[data-contact-form]");

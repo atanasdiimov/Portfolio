@@ -16,20 +16,26 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" />
+    </noscript>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
     <link rel="apple-touch-icon" href="assets/favicon.png" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260623b" />
+    <link rel="stylesheet" href="assets/styles.css?v=20261002a" />
+    <script src="assets/app.js?v=20261002a" defer onerror="document.documentElement.classList.remove('js')"></script>
   </head>
   <body class="is-loading" data-page="about">
     <div class="site-loader" data-site-loader role="status" aria-live="polite">
       <div class="site-loader__stage">
         <div class="site-loader__glow" aria-hidden="true"></div>
         <figure class="site-loader__art" aria-hidden="true">
-          <img class="site-loader__image" src="assets/loadpage.png" alt="" decoding="async" />
+          <img class="site-loader__image" src="assets/loadpage.webp" alt="" decoding="async" fetchpriority="low" />
         </figure>
         <div class="site-loader__copy">
           <strong>Учителско портфолио</strong>
@@ -41,7 +47,7 @@
         <div class="container topbar-inner">
           <a class="brand" href="index.html" aria-label="Портфолио">
             <div class="brand-mark">
-              <img class="brand-mark-image" src="assets/atanas-photo.jpg" alt="Атанас Димов" />
+              <img class="brand-mark-image" src="assets/atanas-photo.webp" alt="Атанас Димов" width="640" height="640" decoding="async" />
             </div>
             <div class="brand-copy">
               <div class="brand-title">Портфолио на Атанас Димов</div>
@@ -78,7 +84,7 @@
             <article class="card profile-card reveal">
               <div class="portrait-showcase">
                 <div class="portrait-shell is-fallback" data-portrait-shell>
-                  <img class="portrait-image" src="assets/atanas-photo.jpg" alt="Портрет на Атанас Димов" data-portrait />
+                  <img class="portrait-image" src="assets/atanas-photo.webp" alt="Портрет на Атанас Димов" width="640" height="640" decoding="async" fetchpriority="high" data-portrait />
                   <div class="portrait-fallback" aria-hidden="true">
                     <span>АД</span>
                     <small>Портфолио</small>
@@ -99,7 +105,7 @@
                 </div>
                 <div class="detail-pill">
                   <span>Възраст</span>
-                  <strong>23 г.</strong>
+                  <strong data-birth-date="2002-07-12">24 г.</strong>
                 </div>
                 <div class="detail-pill detail-pill-wide">
                   <span>Образование</span>
@@ -135,7 +141,7 @@
             </article>
 
             <figure class="about-campus-card reveal">
-              <img src="assets/about/school-building.jpg" alt="Сградата на ИСУ Никола Й. Вапцаров в гр. Генерал Тошево" />
+              <img src="assets/about/school-building.webp" alt="Сградата на ИСУ Никола Й. Вапцаров в гр. Генерал Тошево" width="1280" height="853" loading="lazy" decoding="async" />
               <figcaption>
                 <span class="about-campus-label">Училищна среда</span>
                 <strong>ИСУ „Никола Й. Вапцаров“, гр. Генерал Тошево</strong>
@@ -160,12 +166,8 @@
       </footer>
     </div>
 
-    <script src="assets/app.js?v=20260623c"></script>
   </body>
 </html>
-
-
-
 
 
 

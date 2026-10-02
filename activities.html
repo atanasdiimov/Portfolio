@@ -16,20 +16,26 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" />
+    </noscript>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
     <link rel="apple-touch-icon" href="assets/favicon.png" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260623b" />
+    <link rel="stylesheet" href="assets/styles.css?v=20261002a" />
+    <script src="assets/app.js?v=20261002a" defer onerror="document.documentElement.classList.remove('js')"></script>
   </head>
   <body class="is-loading" data-page="activities">
     <div class="site-loader" data-site-loader role="status" aria-live="polite">
       <div class="site-loader__stage">
         <div class="site-loader__glow" aria-hidden="true"></div>
         <figure class="site-loader__art" aria-hidden="true">
-          <img class="site-loader__image" src="assets/loadpage.png" alt="" decoding="async" />
+          <img class="site-loader__image" src="assets/loadpage.webp" alt="" decoding="async" fetchpriority="low" />
         </figure>
         <div class="site-loader__copy">
           <strong>Учителско портфолио</strong>
@@ -40,7 +46,7 @@
       <header class="topbar">
         <div class="container topbar-inner">
           <a class="brand" href="index.html" aria-label="Портфолио">
-            <div class="brand-mark"><img class="brand-mark-image" src="assets/atanas-photo.jpg" alt="Атанас Димов" /></div>
+            <div class="brand-mark"><img class="brand-mark-image" src="assets/atanas-photo.webp" alt="Атанас Димов" width="640" height="640" decoding="async" /></div>
             <div class="brand-copy">
               <div class="brand-title">Портфолио на Атанас Димов</div>
               <div class="brand-subtitle">Учител по информационни технологии | ИСУ „Никола Й. Вапцаров“</div>
@@ -126,7 +132,7 @@
                   <div class="activity-media">
                     <figure class="activity-photo-frame">
                       <img
-                        src="assets/activities/kmit-5/angry-birds-horizontal.png"
+                        src="assets/activities/kmit-5/angry-birds-horizontal.webp"
                         alt="Ученици работят по графичен проект в КМИТ 5. клас"
                         loading="lazy"
                       />
@@ -160,7 +166,7 @@
                   <div class="activity-media">
                     <figure class="activity-photo-frame">
                       <img
-                        src="assets/activities/kmit-6/pictoblox-horizontal.png"
+                        src="assets/activities/kmit-6/pictoblox-horizontal.webp"
                         alt="Ученици работят с PictoBlox в КМИТ 6. клас"
                         loading="lazy"
                       />
@@ -190,7 +196,7 @@
                   <div class="activity-media">
                     <figure class="activity-photo-frame">
                       <img
-                        src="assets/activities/it-8/google-sites-horizontal.png"
+                        src="assets/activities/it-8/google-sites-horizontal.webp"
                         alt="Презентация и работа с дигитално съдържание в ИТ 8. клас"
                         loading="lazy"
                       />
@@ -224,7 +230,7 @@
                   <div class="activity-media">
                     <figure class="activity-photo-frame">
                       <img
-                        src="assets/activities/inclusive-education/graphic-tablet.png"
+                        src="assets/activities/inclusive-education/graphic-tablet.webp"
                         alt="Ученик работи с графичен таблет в подкрепяща учебна среда"
                         loading="lazy"
                       />
@@ -256,7 +262,7 @@
                   <div class="activity-media">
                     <figure class="activity-photo-frame">
                       <img
-                        src="assets/activities/club-govori-internet/podcast2.jpg"
+                        src="assets/activities/club-govori-internet/podcast2.webp"
                         alt="Подкаст дейност в училищния клуб Говори Интернет"
                         loading="lazy"
                       />
@@ -286,12 +292,8 @@
       </footer>
     </div>
 
-    <script src="assets/app.js?v=20260623c"></script>
   </body>
 </html>
-
-
-
 
 
 
