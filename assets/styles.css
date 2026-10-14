@@ -207,6 +207,7 @@ h3 {
 .brand-mark {
   width: 3rem;
   height: 3rem;
+  flex-shrink: 0;
   padding: 2px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
@@ -281,6 +282,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  flex-shrink: 0;
 }
 
 .nav a {
@@ -302,6 +304,28 @@ h3 {
 .nav a.is-active {
   background: linear-gradient(135deg, rgba(123, 184, 79, 0.18), rgba(89, 214, 220, 0.1));
   color: var(--ink);
+}
+
+.codeweek-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.codeweek-logo {
+  width: 144px;
+  height: 42px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.nav .codeweek-link {
+  padding: 0.35rem 0.65rem;
+}
+
+.codeweek-link:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 4px;
 }
 
 .hero {
@@ -794,6 +818,7 @@ h3 {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.8rem 1.2rem;
   justify-content: flex-end;
 }
@@ -1411,6 +1436,21 @@ html.js.app-ready .reveal.is-visible.tilt-photo {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.gallery-empty {
+  margin: 0;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.gallery-photo-grid:has(.gallery-photo-box) + .gallery-empty {
+  display: none;
+}
+
+.codeweek-title p {
+  margin-top: 0.8rem;
 }
 
 .gallery-photo-box {

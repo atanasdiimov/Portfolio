@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <title>Учителско портфолио | CodeWeek</title>
+    <meta name="description" content="Галерия от дейностите на Атанас Димов за CodeWeek." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="assets/styles.css?v=20261014a" />
+    <script src="assets/app.js?v=20261002a" defer onerror="document.documentElement.classList.remove('js')"></script>
+  </head>
+  <body class="is-loading" data-page="codeweek">
+    <div class="site-loader" data-site-loader role="status" aria-live="polite">
+      <div class="site-loader__stage">
+        <div class="site-loader__glow" aria-hidden="true"></div>
+        <figure class="site-loader__art" aria-hidden="true">
+          <img class="site-loader__image" src="assets/loadpage.webp" alt="" decoding="async" fetchpriority="low" />
+        </figure>
+        <div class="site-loader__copy">
+          <strong>Учителско портфолио</strong>
+          <span>Зареждане на страницата...</span>
+        </div>
+      </div>
+    </div>
+    <div class="site-shell">
+      <header class="topbar">
+        <div class="container topbar-inner">
+          <a class="brand" href="index.html" aria-label="Портфолио">
+            <div class="brand-mark">
+              <img class="brand-mark-image" src="assets/atanas-photo.webp" alt="Атанас Димов" width="640" height="640" decoding="async" />
+            </div>
+            <div class="brand-copy">
+              <div class="brand-title">Портфолио на Атанас Димов</div>
+              <div class="brand-subtitle">Учител по информационни технологии | ИСУ „Никола Й. Вапцаров“</div>
+            </div>
+          </a>
+          <button class="nav-toggle" type="button" aria-label="Отвори меню" aria-expanded="false" data-nav-toggle>
+            <span></span>
+          </button>
+          <nav class="nav" data-nav>
+            <a href="index.html" data-page="about">За мен</a>
+            <a href="activities.html" data-page="activities">Дейности</a>
+            <a href="gallery.html" data-page="gallery">Галерия</a>
+            <a href="contact.html" data-page="contact">Контакт</a>
+            <a class="codeweek-link" href="codeweek.html" data-page="codeweek" aria-label="CodeWeek" title="CodeWeek">
+              <img class="codeweek-logo" src="assets/codeweek-logo-social.webp" alt="CodeWeek" width="775" height="621" decoding="async" />
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="section">
+          <div class="container">
+            <div class="simple-title codeweek-title reveal">
+              <h1>CodeWeek</h1>
+              <p>Моите дейности за CodeWeek</p>
+            </div>
+            <div class="gallery-archive">
+              <section class="gallery-year" data-gallery-year>
+                <button class="gallery-year-button" type="button" aria-expanded="true" aria-controls="codeweek-year-2026" data-gallery-toggle>
+                  <span class="gallery-year-line" aria-hidden="true"></span>
+                  <span class="gallery-year-label">2026 / 2027 г.</span>
+                  <span class="gallery-year-arrow" aria-hidden="true"></span>
+                </button>
+                <div class="gallery-year-panel" id="codeweek-year-2026">
+                  <!-- Add this school year's CodeWeek photo figures inside the grid. -->
+                  <div class="gallery-photo-grid"></div>
+                  <p class="gallery-empty">Все още няма добавени снимки за тази учебна година.</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-panel footer-panel--compact">
+            <div class="footer-links footer-links-centered">
+              <a href="index.html">За мен</a>
+              <a href="activities.html">Дейности</a>
+              <a href="gallery.html">Галерия</a>
+              <a href="contact.html">Контакт</a>
+              <a class="codeweek-link" href="codeweek.html" aria-label="CodeWeek" title="CodeWeek">
+                <img class="codeweek-logo" src="assets/codeweek-logo-social.webp" alt="CodeWeek" width="775" height="621" decoding="async" />
+              </a>
+            </div>
+          </div>
+          <div class="footer-legal">Атанас Димов © 2026</div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
