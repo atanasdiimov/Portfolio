@@ -19,8 +19,12 @@ if (siteLoader) {
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
     : null;
   const prefersReducedMotion = !!(mediaQuery && mediaQuery.matches);
+  const minimumVisibleMs = prefersReducedMotion ? 0 : 700;
   const removeDelayMs = prefersReducedMotion ? 0 : 200;
+  const loaderImage = siteLoader.querySelector(".site-loader__image");
   let loaderHidden = false;
+  let hideTimeout;
+  const fallbackTimeout = window.setTimeout(hideSiteLoader, 2000);
 
   function hideSiteLoader() {
     if (loaderHidden) {
@@ -28,6 +32,13 @@ if (siteLoader) {
     }
 
     loaderHidden = true;
+    window.clearTimeout(hideTimeout);
+    window.clearTimeout(fallbackTimeout);
+
+    if (loaderImage) {
+      loaderImage.removeEventListener("load", finishWhenReady);
+      loaderImage.removeEventListener("error", hideSiteLoader);
+    }
 
     if (document.body) {
       document.body.classList.remove("is-loading");
@@ -41,11 +52,28 @@ if (siteLoader) {
     }, removeDelayMs);
   }
 
-  // The document can be used while images are still downloading.
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", hideSiteLoader, { once: true });
-  } else {
+  function finishWhenReady() {
+    if (loaderHidden) {
+      return;
+    }
+
+    hideTimeout = window.setTimeout(hideSiteLoader, minimumVisibleMs);
+  }
+
+  // Keep the school logo visible briefly without waiting for the gallery.
+  if (prefersReducedMotion) {
     hideSiteLoader();
+  } else if (!loaderImage) {
+    finishWhenReady();
+  } else if (loaderImage.complete) {
+    if (loaderImage.naturalWidth > 0) {
+      finishWhenReady();
+    } else {
+      hideSiteLoader();
+    }
+  } else {
+    loaderImage.addEventListener("load", finishWhenReady, { once: true });
+    loaderImage.addEventListener("error", hideSiteLoader, { once: true });
   }
 }
 
